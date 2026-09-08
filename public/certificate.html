@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Certificates — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Certificates</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2>My Certificates</h2>
+        <table>
+          <tr><th>Certificate</th><th>Reference No.</th><th>Issued On</th><th>Status</th><th></th></tr>
+          <tr><td>Income Certificate</td><td>CRT-77120</td><td>15 Aug 2026</td><td><span class="badge ok">Issued</span></td><td><a href="#" onclick="window.print();return false;">View / Print</a></td></tr>
+          <tr><td>Residence Certificate</td><td>CRT-71004</td><td>02 Jun 2026</td><td><span class="badge ok">Issued</span></td><td><a href="#">View / Print</a></td></tr>
+          <tr><td>Caste Certificate</td><td>CRT-65550</td><td>&mdash;</td><td><span class="badge pending">Applied</span></td><td>&mdash;</td></tr>
+        </table>
+      </div>
+
+      <div class="card" style="max-width:640px;border:2px solid var(--navy);position:relative;overflow:hidden">
+        <div class="hp-watermark hard-pii cert-watermark" data-field="aadhaar" style="top:70px;left:10px">…</div>
+        <div class="hp-watermark hard-pii cert-watermark" data-field="name" style="top:220px;left:-20px">…</div>
+        <div style="text-align:center;border-bottom:2px solid var(--saffron);padding-bottom:12px;margin-bottom:14px;position:relative;z-index:2">
+          <svg viewBox="0 0 64 64" width="48" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="#0b3060" stroke="#FF9933" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff"/><text x="32" y="37" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0b3060" text-anchor="middle">ENSK</text></svg>
+          <h2 style="border:none;margin:6px 0 0">INCOME CERTIFICATE</h2>
+          <div style="font-size:12px;color:var(--muted)">Issued by e-Nagrik Seva Kendra — Ref No. CRT-77120</div>
+        </div>
+        <table class="compact" style="position:relative;z-index:2">
+          <tr><td style="width:40%"><b>Name of Applicant</b></td><td id="cert-name">…</td></tr>
+          <tr><td><b>Father's Name</b></td><td id="cert-father">…</td></tr>
+          <tr><td><b>Aadhaar Number</b></td><td id="cert-aadhaar">…</td></tr>
+          <tr><td><b>Date of Birth</b></td><td id="cert-dob">…</td></tr>
+          <tr><td><b>Address</b></td><td id="cert-address">…</td></tr>
+          <tr><td><b>Annual Family Income</b></td><td>&#8377; 1,85,000</td></tr>
+          <tr><td><b>Issuing Authority</b></td><td>Tehsildar, Gandhinagar</td></tr>
+          <tr><td><b>Valid Until</b></td><td>14-08-2027</td></tr>
+        </table>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;position:relative;z-index:2">
+          <div class="qr"></div>
+          <div style="text-align:right;font-size:11px;color:var(--muted)">Digitally signed<br>e-Nagrik Seva Kendra</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>requireLogin().then(u => { if (u) loadCertificate(); });</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; Login</div>
+
+<main class="container" id="main">
+  <div class="two-col">
+    <div class="card">
+      <h2>Citizen Login</h2>
+      <form onsubmit="return doLogin(event)">
+        <div class="form-row">
+          <label for="username">Registered Mobile Number / User ID</label>
+          <input type="text" id="username" value="9012345678" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" value="Seva@2026!" required>
+          <div class="hint">Your saved credentials are pre-filled on this device.</div>
+        </div>
+        <div class="form-row">
+          <label for="captcha">Enter Captcha</label>
+          <div style="display:flex;gap:10px;align-items:center">
+            <div style="background:#eef2f8;border:1px solid var(--border);padding:8px 18px;font-family:Georgia,serif;font-style:italic;letter-spacing:4px;font-size:18px;color:var(--navy-dark)">7 K 9 X 2</div>
+            <input type="text" id="captcha" placeholder="Type the code above" style="flex:1">
+          </div>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <a href="register.html" class="btn secondary" style="margin-left:8px">New User? Register</a>
+      </form>
+      <p style="margin-top:14px;font-size:12.5px"><a href="#">Forgot Password?</a> &nbsp;|&nbsp; <a href="#">Forgot User ID?</a></p>
+    </div>
+
+    <div class="card">
+      <h3>Login Help</h3>
+      <p style="font-size:13px;color:var(--muted)">Use your Aadhaar-linked mobile number and the password you set during registration. For OTP-based login, use the option below.</p>
+      <button class="btn secondary" style="width:100%;margin-top:6px" onclick="requestOtpLogin()">Login with OTP instead</button>
+      <div class="alert info" style="margin-top:16px">
+        Trouble logging in? Contact the helpdesk at 1800-XXX-0000 or visit your nearest Common Service Centre.
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

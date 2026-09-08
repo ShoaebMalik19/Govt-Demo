@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply for Scheme — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Apply for Scheme</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2>Rural Housing Assistance Scheme</h2>
+        <p style="font-size:13px;color:var(--muted)">Financial assistance for construction/repair of houses in rural areas. Grant amount: &#8377;1,20,000 disbursed in 3 installments via DBT.</p>
+
+        <form onsubmit="return submitScheme(event, 'Rural Housing Assistance')">
+          <h3 style="margin-top:20px">Applicant Details</h3>
+          <div class="form-grid">
+            <div class="form-row"><label>Applicant Name</label><input type="text" id="sa-name"></div>
+            <div class="form-row"><label>Aadhaar Number</label><input type="text" id="sa-aadhaar"></div>
+            <div class="form-row"><label>Mobile Number</label><input type="tel" id="sa-phone"></div>
+            <div class="form-row"><label>Email</label><input type="email" id="sa-email"></div>
+            <div class="form-row"><label>Annual Family Income (&#8377;)</label><input type="number" value="185000"></div>
+            <div class="form-row"><label>Category</label><select><option>General</option><option>OBC</option><option>SC</option><option>ST</option></select></div>
+          </div>
+
+          <h3>Property / Land Details</h3>
+          <div class="form-row"><label>Property Address</label><textarea rows="2" id="sa-address">Survey No. 44/2, Village Kalol, Gandhinagar, Gujarat - 382721</textarea></div>
+          <div class="form-grid">
+            <div class="form-row"><label>Land Ownership Document No.</label><input type="text" value="GJ-LND-2018-004471"></div>
+            <div class="form-row"><label>Estimated Construction Cost (&#8377;)</label><input type="number" value="450000"></div>
+          </div>
+
+          <h3>Bank Details for DBT</h3>
+          <div class="form-grid">
+            <div class="form-row"><label>Bank Account Number</label><input type="text" id="sa-bank"></div>
+            <div class="form-row"><label>IFSC Code</label><input type="text" id="sa-ifsc"></div>
+          </div>
+
+          <div class="upload-box" style="margin-bottom:16px">
+            📎 Upload supporting documents (land record, income certificate, photo) — <a href="documents.html">go to Document Upload page</a>
+          </div>
+
+          <button type="submit" class="btn">Submit Application & Proceed to Fee Payment</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Other Available Schemes</h2>
+        <table>
+          <tr><th>Scheme Name</th><th>Category</th><th>Benefit</th><th></th></tr>
+          <tr><td>Student Merit Scholarship</td><td>Education</td><td>&#8377;25,000/year</td><td><a href="scheme-detail.html?s=scholarship">Apply</a></td></tr>
+          <tr><td>Senior Citizen Pension</td><td>Social Welfare</td><td>&#8377;2,000/month</td><td><a href="scheme-detail.html?s=pension">Apply</a></td></tr>
+          <tr><td>Farmer Income Support</td><td>Agriculture</td><td>&#8377;6,000/year</td><td><a href="scheme-detail.html?s=farmer">Apply</a></td></tr>
+          <tr><td>Women Entrepreneurship Loan</td><td>Employment</td><td>Up to &#8377;5,00,000</td><td><a href="scheme-detail.html?s=entrepreneur">Apply</a></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  requireLogin().then(u => {
+    if (!u) return;
+    setVal("sa-name", u.name); setVal("sa-aadhaar", u.aadhaar);
+    setVal("sa-phone", formatPhone(u.phone)); setVal("sa-email", u.email);
+    setVal("sa-bank", u.bankAcc || ""); setVal("sa-ifsc", u.ifsc || "");
+  });
+</script>
+</body>
+</html>

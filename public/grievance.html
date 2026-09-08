@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>File a Grievance — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; Grievance</div>
+
+<main class="container" id="main">
+  <div class="two-col">
+    <div class="card">
+      <h2>File a Grievance</h2>
+      <form onsubmit="return submitGrievance(event)">
+        <div class="form-grid">
+          <div class="form-row"><label>Full Name *</label><input type="text" id="g-name" required></div>
+          <div class="form-row"><label>Mobile Number *</label><input type="tel" id="g-phone" required></div>
+          <div class="form-row"><label>Email Address</label><input type="email" id="g-email"></div>
+          <div class="form-row"><label>Aadhaar / Application ID</label><input type="text" id="g-aadhaar"></div>
+        </div>
+        <div class="form-row">
+          <label>Category *</label>
+          <select id="g-category"><option>Delayed Certificate</option><option>Payment Not Received</option><option>Application Rejected Incorrectly</option><option>Portal Technical Issue</option><option>Other</option></select>
+        </div>
+        <div class="form-row">
+          <label>Grievance Details *</label>
+          <textarea rows="5" id="g-details" required>I applied for the Rural Housing Assistance Scheme (Application SCH-88213) on 28 Aug 2026. It has been under review for over 2 weeks. Please expedite processing.</textarea>
+        </div>
+        <div class="upload-box" style="margin-bottom:16px">Attach supporting document (optional) — screenshot, receipt, or ID proof</div>
+        <button type="submit" class="btn">Submit Grievance</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>My Open Grievances</h3>
+      <table class="compact">
+        <tr><th>Ref No.</th><th>Category</th><th>Filed On</th><th>Status</th></tr>
+        <tbody id="grv-list-body"><tr><td colspan="4">Login to view your filed grievances.</td></tr></tbody>
+      </table>
+      <div class="alert info" style="margin-top:16px">Average resolution time: 6.5 working days. You will be contacted on your registered mobile number and email for updates.</div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  fetchMe().then(u => {
+    if (u) {
+      setVal("g-name", u.name); setVal("g-phone", formatPhone(u.phone));
+      setVal("g-email", u.email); setVal("g-aadhaar", u.aadhaar);
+      loadGrievances();
+    }
+  });
+</script>
+</body>
+</html>

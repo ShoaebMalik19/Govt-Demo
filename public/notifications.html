@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notifications — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.msg{border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:12px;background:#fff}
+.msg .mh{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.msg .mb{font-size:13.5px}
+</style>
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Notifications</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2>One-Time Password</h2>
+        <p style="font-size:13px;color:var(--muted)">OTP sent to your registered mobile number <span id="notif-phone">…</span> for the current transaction.</p>
+        <div class="alert otp" id="otp-box">482913</div>
+        <p style="font-size:12px;color:var(--muted);text-align:center">Valid for <span id="otp-timer">10:00</span> — do not share this OTP with anyone, including bank/government officials.</p>
+      </div>
+
+      <div class="card">
+        <h2>Recent Notifications</h2>
+        <div id="notif-list"><div class="msg">Loading…</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  requireLogin().then(u => {
+    if (!u) return;
+    setText("notif-phone", formatPhone(u.phone));
+    loadNotifications();
+    startOtpCountdown("otp-timer", 600);
+  });
+</script>
+</body>
+</html>

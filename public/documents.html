@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document Upload — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.doc-row{display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-radius:6px;padding:12px 14px;margin-bottom:10px}
+.doc-row .di{flex:1}
+.doc-row .dn{font-weight:600;font-size:13.5px}
+.doc-row .dd{font-size:12px;color:var(--muted)}
+.doc-thumb{width:70px;height:52px;background:#eef2f8;border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);flex:none;overflow:hidden}
+.photo-silhouette{width:100%;height:100%;background:#c9d6e6;display:flex;align-items:end;justify-content:center}
+.photo-silhouette svg{width:70%}
+</style>
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Document Upload</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2>Upload Supporting Documents</h2>
+        <p style="font-size:13px;color:var(--muted)">Upload clear scans/photos of the following documents. Accepted formats: JPG, PNG, PDF (max 2MB each).</p>
+
+        <div id="doc-list"><div class="doc-row"><div class="di">Loading…</div></div></div>
+
+        <div class="upload-box">
+          <div style="font-size:26px">📤</div>
+          Drag &amp; drop files here, or click to browse
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Preview — Aadhaar Card (as submitted)</h2>
+        <div class="id-card" style="width:380px;position:relative;overflow:hidden">
+          <div class="hp-watermark hard-pii" style="top:38px;left:-30px" id="doc-prev-watermark">…</div>
+          <div class="idc-head">
+            <svg class="em" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="#0b3060" stroke="#FF9933" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff"/><text x="32" y="37" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0b3060" text-anchor="middle">ENSK</text></svg>
+            <div><div class="t1">e-Nagrik Seva Kendra</div><div class="t2">Identity &amp; Demographic Records Authority</div></div>
+          </div>
+          <div class="idc-body">
+            <div class="avatar" style="background:#c9d6e6"><svg viewBox="0 0 24 24" width="34"><circle cx="12" cy="8" r="5" fill="#5c728e"/><path d="M2 22c0-6 4.5-9 10-9s10 3 10 9" fill="#5c728e"/></svg></div>
+            <div class="idc-fields">
+              <div><b>Name</b> <span id="doc-prev-name">…</span></div>
+              <div><b>DOB</b> <span id="doc-prev-dob">…</span></div>
+              <div><b>Gender</b> <span id="doc-prev-gender">…</span></div>
+              <div class="hp-occluded hard-pii"><span class="hp-behind" id="doc-prev-father">…</span><span class="hp-cover"><b>Father</b> &nbsp;</span></div>
+              <div><b>Address</b> <span id="doc-prev-address">…</span></div>
+            </div>
+          </div>
+          <div class="idc-num" id="doc-prev-aadhaar">…</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+            <div class="qr"></div>
+            <div class="hp-tiny hard-pii" id="doc-prev-vid">…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>requireLogin().then(u => { if (u) { loadDocuments(); loadDocPreview(); } });</script>
+</body>
+</html>

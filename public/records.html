@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Application Records — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Application Records</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2>Department Records — Applicant Search</h2>
+        <p style="font-size:13px;color:var(--muted)">Internal view used by department staff to look up applicant records across districts.</p>
+        <div class="form-grid" style="margin-bottom:10px">
+          <div class="form-row"><label>Search by Name / Aadhaar / Application ID</label><input type="text" id="rec-search" placeholder="e.g. Ananya Sharma or 5321 8890 4471" oninput="onRecordsSearch()"></div>
+          <div class="form-row"><label>Filter by District</label>
+            <select id="rec-district" onchange="onRecordsSearch()">
+              <option>All Districts</option><option>Gandhinagar</option><option>Lucknow</option><option>Bhopal</option>
+              <option>Coimbatore</option><option>Kochi</option><option>Nagpur</option><option>Amritsar</option><option>Hyderabad</option><option>Pune</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Application ID</th><th>Name</th><th>Aadhaar Number</th><th>Mobile</th><th>Email</th><th>District</th><th>Status</th></tr>
+          </thead>
+          <tbody id="records-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  function onRecordsSearch() {
+    loadRecords(document.getElementById("rec-search").value, document.getElementById("rec-district").value);
+  }
+  requireLogin().then(u => { if (u) loadRecords(); });
+</script>
+</body>
+</html>

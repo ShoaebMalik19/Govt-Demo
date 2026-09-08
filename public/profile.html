@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Profile — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; My Profile</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="two-col">
+        <div class="card">
+          <h2>Personal Details</h2>
+          <form onsubmit="return saveProfile(event)">
+            <div class="form-grid">
+              <div class="form-row"><label>Full Name</label><input type="text" id="p-fname"></div>
+              <div class="form-row"><label>Date of Birth</label><input type="date" id="p-dob"></div>
+              <div class="form-row"><label>Aadhaar Number</label><input type="text" id="p-aadhaar"></div>
+              <div class="form-row"><label>PAN Number</label><input type="text" id="p-pan"></div>
+              <div class="form-row"><label>Mobile Number</label><input type="tel" id="p-phone"></div>
+              <div class="form-row"><label>Email Address</label><input type="email" id="p-email"></div>
+            </div>
+            <div class="form-row"><label>Residential Address</label><textarea rows="2" id="p-address"></textarea></div>
+            <button type="submit" class="btn">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>My e-ID Card</h3>
+          <div class="id-card">
+            <div class="idc-head">
+              <svg class="em" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="30" fill="#0b3060" stroke="#FF9933" stroke-width="3"/><circle cx="32" cy="32" r="15" fill="#fff"/><text x="32" y="37" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0b3060" text-anchor="middle">ENSK</text></svg>
+              <div><div class="t1">e-Nagrik Seva Kendra</div><div class="t2">Citizen Identity Card</div></div>
+            </div>
+            <div class="idc-body">
+              <div class="avatar" id="idc-initials">AS</div>
+              <div class="idc-fields">
+                <div><b>Name</b> <span id="idc-name">…</span></div>
+                <div><b>DOB</b> <span id="idc-dob">…</span></div>
+                <div><b>Gender</b> <span id="idc-gender">…</span></div>
+                <div><b>Address</b> <span id="idc-address">…</span></div>
+              </div>
+            </div>
+            <div class="idc-num reveal-field">
+              <span class="val" id="idc-aadhaar" data-masked="XXXX XXXX 0000" data-full="0000 0000 0000">XXXX XXXX 0000</span>
+            </div>
+            <div style="text-align:center;margin-top:2px">
+              <button type="button" class="toggle-link" onclick="toggleReveal('idc-aadhaar', this)" style="font-size:11px;color:var(--link);background:none;border:none;cursor:pointer;text-decoration:underline">Show Full Number</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+              <div class="qr"></div>
+              <div style="font-size:9.5px;color:var(--muted);text-align:right">Issued: 15-08-2026<br>Valid till: 14-08-2036</div>
+            </div>
+          </div>
+          <button class="btn secondary" style="margin-top:14px;width:100%" onclick="downloadCard()">Download as PDF</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Bank & Payment Details</h2>
+        <div class="form-grid">
+          <div class="form-row"><label>Account Holder Name</label><input type="text" id="p-holder"></div>
+          <div class="form-row">
+            <label>Bank Account Number <span class="hp-hover hard-pii" style="font-weight:400;color:var(--muted);font-size:11px">(linked account &#9432;<span class="hp-tooltip" id="hp-bank-tooltip">Primary: —</span>)</span></label>
+            <input type="text" id="p-bankAcc">
+          </div>
+          <div class="form-row"><label>IFSC Code</label><input type="text" id="p-ifsc"></div>
+          <div class="form-row"><label>UPI ID</label><input type="text" id="p-upi"></div>
+        </div>
+        <div class="alert warn">These details are used for Direct Benefit Transfer (DBT) of scheme payouts. Keep them updated.</div>
+        <div class="hp-lowcontrast hard-pii" style="margin-top:10px" id="p-lowcontrast-note">Linked mandate ref: — &middot; secondary contact —</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>requireLogin().then(u => { if (u) loadProfile(); });</script>
+</body>
+</html>

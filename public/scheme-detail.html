@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scheme Details — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="scheme-apply.html">Schemes</a> &raquo; <span id="sd-name-crumb">Scheme</span></div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card">
+        <h2 id="sd-name">…</h2>
+        <table class="compact" style="margin-bottom:14px">
+          <tr><td style="width:30%"><b>Category</b></td><td id="sd-category">…</td></tr>
+          <tr><td><b>Benefit</b></td><td id="sd-benefit">…</td></tr>
+        </table>
+        <p id="sd-desc" style="font-size:13.5px;color:var(--muted)">…</p>
+
+        <form id="sd-form" onsubmit="return submitSchemeDetail(event)">
+          <h3 style="margin-top:20px">Applicant Details</h3>
+          <div class="form-grid">
+            <div class="form-row"><label>Applicant Name</label><input type="text" id="sd-name-field"></div>
+            <div class="form-row"><label>Aadhaar Number</label><input type="text" id="sd-aadhaar"></div>
+            <div class="form-row"><label>Mobile Number</label><input type="tel" id="sd-phone"></div>
+            <div class="form-row"><label>Email</label><input type="email" id="sd-email"></div>
+          </div>
+          <div class="form-row">
+            <label id="sd-extra-label">Additional Detail</label>
+            <input type="text" id="sd-extra">
+          </div>
+          <button type="submit" class="btn">Submit Application &amp; Proceed to Fee Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  requireLogin().then(u => { if (u) loadSchemeDetail(); });
+</script>
+</body>
+</html>

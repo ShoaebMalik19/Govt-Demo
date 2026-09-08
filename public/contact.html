@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Helpdesk — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; Contact Us</div>
+
+<main class="container" id="main">
+  <div class="two-col">
+    <div class="card">
+      <h2>Contact the Helpdesk</h2>
+      <form id="contact-form" onsubmit="return submitContact(event)">
+        <div class="form-grid">
+          <div class="form-row"><label>Your Name *</label><input type="text" id="c-name" placeholder="Full name" required></div>
+          <div class="form-row"><label>Mobile Number *</label><input type="tel" id="c-phone" placeholder="+91 XXXXX XXXXX" required></div>
+        </div>
+        <div class="form-row"><label>Email Address</label><input type="email" id="c-email" placeholder="you@example.com"></div>
+        <div class="form-row"><label>Subject *</label><input type="text" id="c-subject" placeholder="e.g. Unable to download certificate" required></div>
+        <div class="form-row"><label>Message *</label><textarea rows="5" id="c-message" placeholder="Describe your issue in detail" required></textarea></div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Helpdesk Details</h3>
+      <table class="compact">
+        <tr><td><b>Toll-Free</b></td><td>1800-XXX-0000</td></tr>
+        <tr><td><b>Email</b></td><td>help@sevamail.in</td></tr>
+        <tr><td><b>Hours</b></td><td>Mon&ndash;Sat, 9:30 AM &ndash; 6:00 PM</td></tr>
+        <tr><td><b>Office</b></td><td>e-Nagrik Bhawan, Sector 10, Gandhinagar</td></tr>
+      </table>
+
+      <h3 style="margin-top:20px">District Officer Contacts</h3>
+      <table class="compact">
+        <tr><th>District</th><th>Officer</th><th>Contact</th></tr>
+        <tr><td>Gandhinagar</td><td>R. K. Mehta</td><td>+91 79xxx-22110</td></tr>
+        <tr><td>Lucknow</td><td>S. Bhatt</td><td>+91 522x-88012</td></tr>
+        <tr><td>Bhopal</td><td>N. Qureshi</td><td>+91 755x-33421</td></tr>
+      </table>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

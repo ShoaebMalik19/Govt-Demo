@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fee Payment — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; <a href="dashboard.html">Dashboard</a> &raquo; Fee Payment</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="two-col">
+        <div class="card">
+          <h2>Application Processing Fee</h2>
+          <table class="compact" style="margin-bottom:16px">
+            <tr><td>Applicant</td><td id="pay-applicant">…</td></tr>
+            <tr><td>Scheme</td><td>Rural Housing Assistance</td></tr>
+            <tr><td>Processing Fee</td><td>&#8377;250.00</td></tr>
+            <tr><td>Verification Charges</td><td>&#8377;100.00</td></tr>
+            <tr><td><b>Total Payable</b></td><td><b>&#8377;350.00</b></td></tr>
+          </table>
+
+          <h3>Pay via Card</h3>
+          <form onsubmit="return payViaCard(event)">
+            <div class="form-row"><label>Name on Card</label><input type="text" id="pay-cardname"></div>
+            <div class="form-grid">
+              <div class="form-row"><label>Card Number</label><input type="text" value="4551 2200 9987 6610"></div>
+              <div class="form-row"><label>Expiry</label><input type="text" value="09/29"></div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row"><label>CVV</label><input type="password" value="482"></div>
+              <div class="form-row"><label>OTP (sent to registered mobile)</label><input type="text" value="482913"></div>
+            </div>
+            <button type="submit" class="btn">Pay &#8377;350.00</button>
+          </form>
+
+          <h3 style="margin-top:20px">Or Pay via UPI</h3>
+          <div class="form-row"><label>UPI ID</label><input type="text" id="pay-upi"></div>
+          <button class="btn secondary" type="button" onclick="payViaUpi()">Pay via UPI</button>
+        </div>
+
+        <div class="card">
+          <h3>Payment History</h3>
+          <table class="compact">
+            <tr><th>Date</th><th>For</th><th>Amount</th><th>Status</th></tr>
+            <tbody id="pay-history-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+          </table>
+          <div class="alert info" style="margin-top:14px">All transactions are secured with 256-bit encryption and processed through the National Payments Gateway.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>
+  requireLogin().then(u => {
+    if (!u) return;
+    setVal("pay-cardname", u.name);
+    setVal("pay-upi", u.upi || "");
+    loadPayments();
+  });
+</script>
+</body>
+</html>

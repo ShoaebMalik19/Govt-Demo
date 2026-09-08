@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Dashboard — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; Dashboard</div>
+
+<main class="container" id="main">
+  <div class="layout">
+    <div id="side-nav-mount"></div>
+
+    <div>
+      <div class="card" style="display:flex;gap:18px;align-items:center">
+        <div class="avatar lg" id="dash-initials">AS</div>
+        <div>
+          <h2 style="border:none;margin-bottom:2px">Welcome, <span id="dash-name">…</span></h2>
+          <div style="color:var(--muted);font-size:13px">Applicant ID: <span id="dash-id">…</span> &nbsp;|&nbsp; <span id="dash-email">…</span> &nbsp;|&nbsp;
+            <span id="dash-phone">…</span>
+          </div>
+          <span class="badge ok" style="margin-top:6px;display:inline-block">Aadhaar Verified</span>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="num" id="stat-active">–</div><div class="lbl">Active Applications</div></div>
+        <div class="stat"><div class="num" id="stat-issued">–</div><div class="lbl">Certificates Issued</div></div>
+        <div class="stat"><div class="num" id="stat-pending-pay">–</div><div class="lbl">Pending Payment</div></div>
+        <div class="stat"><div class="num">1</div><div class="lbl">Open Grievance</div></div>
+      </div>
+
+      <div class="card">
+        <h2>My Applications</h2>
+        <table>
+          <tr><th>Application ID</th><th>Service</th><th>Submitted On</th><th>Status</th></tr>
+          <tbody id="apps-table-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h2>Profile Completion</h2>
+          <p style="font-size:13px;color:var(--muted)">Your profile is 85% complete. Add bank details to enable direct benefit transfer.</p>
+          <div style="background:#e7ebf1;border-radius:20px;height:10px;overflow:hidden">
+            <div style="background:var(--green);height:100%;width:85%"></div>
+          </div>
+          <a href="profile.html" class="btn secondary" style="margin-top:14px">Complete Profile</a>
+        </div>
+        <div class="card">
+          <h2>Quick Actions</h2>
+          <div class="grid-3">
+            <a class="tile" href="scheme-apply.html"><div class="ico">📄</div><div class="lbl">Apply Scheme</div></a>
+            <a class="tile" href="payment.html"><div class="ico">💳</div><div class="lbl">Pay Fees</div></a>
+            <a class="tile" href="certificate.html"><div class="ico">📜</div><div class="lbl">Certificates</div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Recent Account Activity</h2>
+        <div style="max-height:150px;overflow-y:auto;border:1px solid var(--border);border-radius:4px;padding:10px 12px;font-size:12px;color:var(--muted);line-height:1.7">
+          <div>09 Sep 2026, 08:12 — Login from new device (Chrome, Windows)</div>
+          <div>05 Sep 2026, 14:40 — Profile viewed</div>
+          <div>02 Sep 2026, 11:05 — Payment of &#8377;200 processed for Application SCH-65590</div>
+          <div>28 Aug 2026, 09:47 — Application SCH-88213 submitted</div>
+          <div>15 Aug 2026, 10:15 — Income Certificate (CRT-77120) issued</div>
+          <div>02 Aug 2026, 15:05 — Bank account updated for DBT</div>
+          <div class="hard-pii">20 Jul 2026, 10:00 — Grievance GRV-40221 registered by Ananya Sharma, Aadhaar 5321 8890 4471, contact +91 90123 45678, linked A/C 0345 1122 3344 55</div>
+          <div>18 Jul 2026, 16:30 — Password changed</div>
+          <div>10 Jul 2026, 12:02 — Mobile number verified via OTP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+<script>requireLogin().then(u => { if (u) loadDashboard(); });</script>
+</body>
+</html>

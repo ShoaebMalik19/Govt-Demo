@@ -1,0 +1,224 @@
+{
+  "citizens": [
+    {
+      "id": "ENSK-2026-081452",
+      "name": "Ananya Sharma",
+      "dob": "1998-03-14",
+      "gender": "Female",
+      "aadhaar": "5321 8890 4471",
+      "phone": "9012345678",
+      "email": "ananya.sharma98@sevamail.in",
+      "pan": "ATZPS1234K",
+      "address": "H.No. 221, Sector 45, Gandhinagar, Gujarat - 382421",
+      "pincode": "382421",
+      "district": "Gandhinagar",
+      "password": "Seva@2026!",
+      "bankAcc": "0345 1122 3344 55",
+      "ifsc": "SVCB0000123",
+      "upi": "ananya.sharma98@sevapay",
+      "createdAt": "2026-08-01T10:00:00.000Z",
+      "status": "Verified"
+    },
+    {
+      "id": "ENSK-2026-077213",
+      "name": "Rohit Verma",
+      "phone": "9822011543",
+      "email": "rohit.verma@sevamail.in",
+      "aadhaar": "6810 2245 9931",
+      "district": "Lucknow",
+      "password": "x",
+      "createdAt": "2026-07-20T10:00:00.000Z",
+      "status": "Pending"
+    },
+    {
+      "id": "ENSK-2026-069981",
+      "name": "Fatima Sheikh",
+      "phone": "8765432109",
+      "email": "f.sheikh22@sevamail.in",
+      "aadhaar": "7742 1190 6620",
+      "district": "Bhopal",
+      "password": "x",
+      "createdAt": "2026-07-18T10:00:00.000Z",
+      "status": "Verified"
+    },
+    {
+      "id": "ENSK-2026-055327",
+      "name": "Karthik Iyer",
+      "phone": "9004455112",
+      "email": "karthik.iyer@sevamail.in",
+      "aadhaar": "4498 3321 7765",
+      "district": "Coimbatore",
+      "password": "x",
+      "createdAt": "2026-07-10T10:00:00.000Z",
+      "status": "Verified"
+    },
+    {
+      "id": "ENSK-2026-041098",
+      "name": "Priya Nair",
+      "phone": "9633120987",
+      "email": "priya.nair@sevamail.in",
+      "aadhaar": "3390 8871 2246",
+      "district": "Kochi",
+      "password": "x",
+      "createdAt": "2026-06-28T10:00:00.000Z",
+      "status": "Rejected"
+    },
+    {
+      "id": "ENSK-2026-038820",
+      "name": "Devendra Patil",
+      "phone": "7899012233",
+      "email": "d.patil@sevamail.in",
+      "aadhaar": "8821 4470 3391",
+      "district": "Nagpur",
+      "password": "x",
+      "createdAt": "2026-06-20T10:00:00.000Z",
+      "status": "Pending"
+    },
+    {
+      "id": "ENSK-2026-029114",
+      "name": "Simran Kaur",
+      "phone": "9988766554",
+      "email": "simran.kaur@sevamail.in",
+      "aadhaar": "2214 6693 8850",
+      "district": "Amritsar",
+      "password": "x",
+      "createdAt": "2026-06-05T10:00:00.000Z",
+      "status": "Verified"
+    },
+    {
+      "id": "ENSK-2026-018650",
+      "name": "Abdul Rasheed",
+      "phone": "8520044321",
+      "email": "a.rasheed@sevamail.in",
+      "aadhaar": "9987 3345 1120",
+      "district": "Hyderabad",
+      "password": "x",
+      "createdAt": "2026-05-22T10:00:00.000Z",
+      "status": "Verified"
+    }
+  ],
+  "applications": [
+    {
+      "id": "SCH-88213",
+      "citizenId": "ENSK-2026-081452",
+      "service": "Rural Housing Assistance",
+      "submittedOn": "2026-08-28",
+      "status": "Under Review",
+      "feePaid": false
+    },
+    {
+      "id": "CRT-77120",
+      "citizenId": "ENSK-2026-081452",
+      "service": "Income Certificate",
+      "submittedOn": "2026-08-15",
+      "status": "Issued",
+      "feePaid": true
+    },
+    {
+      "id": "SCH-65590",
+      "citizenId": "ENSK-2026-081452",
+      "service": "Women Entrepreneurship Loan",
+      "submittedOn": "2026-08-02",
+      "status": "Documents Requested",
+      "feePaid": true
+    }
+  ],
+  "documents": [
+    {
+      "citizenId": "ENSK-2026-081452",
+      "type": "Passport Size Photograph",
+      "status": "Uploaded",
+      "filename": "photo_ananya.jpg"
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "type": "Aadhaar Card (front & back)",
+      "status": "Uploaded",
+      "filename": "aadhaar_ananya.pdf"
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "type": "PAN Card",
+      "status": "Pending",
+      "filename": null
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "type": "Income Certificate",
+      "status": "Pending",
+      "filename": null
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "type": "Bank Passbook (first page)",
+      "status": "Pending",
+      "filename": null
+    }
+  ],
+  "grievances": [
+    {
+      "id": "GRV-40221",
+      "citizenId": "ENSK-2026-081452",
+      "category": "Delayed Certificate",
+      "details": "Certificate delayed beyond SLA.",
+      "filedOn": "2026-07-20",
+      "status": "Open"
+    },
+    {
+      "id": "GRV-38810",
+      "citizenId": "ENSK-2026-081452",
+      "category": "Portal Technical Issue",
+      "details": "Login page was unresponsive.",
+      "filedOn": "2026-06-02",
+      "status": "Resolved"
+    }
+  ],
+  "payments": [
+    {
+      "id": "PAY-1001",
+      "citizenId": "ENSK-2026-081452",
+      "for": "Income Certificate",
+      "amount": 50,
+      "date": "2026-08-15",
+      "status": "Paid"
+    },
+    {
+      "id": "PAY-1002",
+      "citizenId": "ENSK-2026-081452",
+      "for": "Entrepreneurship Loan Fee",
+      "amount": 200,
+      "date": "2026-08-02",
+      "status": "Paid"
+    }
+  ],
+  "notifications": [
+    {
+      "citizenId": "ENSK-2026-081452",
+      "channel": "SMS",
+      "from": "SEVAKR",
+      "text": "Your Income Certificate (Ref CRT-77120) has been issued and is available for download.",
+      "at": "2026-08-15T11:20:00.000Z"
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "channel": "System",
+      "from": "System",
+      "text": "Bank details updated: A/C 0345 1122 3344 55, IFSC SVCB0000123 linked for Direct Benefit Transfer.",
+      "at": "2026-08-02T15:05:00.000Z"
+    },
+    {
+      "citizenId": "ENSK-2026-081452",
+      "channel": "System",
+      "from": "System",
+      "text": "Grievance GRV-40221 registered. Our support team will contact you within 7 working days.",
+      "at": "2026-07-20T10:00:00.000Z"
+    }
+  ],
+  "messages": [],
+  "seq": {
+    "app": 88214,
+    "grv": 40222,
+    "pay": 1003,
+    "citizen": 81453
+  }
+}

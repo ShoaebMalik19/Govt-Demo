@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Registration — e-Nagrik Seva Kendra</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header-mount"></div>
+
+<div class="breadcrumb"><a href="index.html">Home</a> &raquo; New Registration</div>
+
+<main class="container" id="main">
+  <div class="card">
+    <h2>Citizen Registration Form</h2>
+    <p style="font-size:13px;color:var(--muted);margin-top:-8px;margin-bottom:16px">Fields marked * are mandatory. Your Aadhaar number is used only to verify identity and is not shared with third parties.</p>
+
+    <form onsubmit="return doRegister(event)">
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="fname">Full Name (as per Aadhaar) *</label>
+          <input type="text" id="fname" value="Rahul Deshmukh" required>
+        </div>
+        <div class="form-row">
+          <label for="dob">Date of Birth *</label>
+          <input type="date" id="dob" value="1996-11-02" required>
+        </div>
+        <div class="form-row">
+          <label for="gender">Gender *</label>
+          <select id="gender"><option>Male</option><option>Female</option><option>Other</option></select>
+        </div>
+        <div class="form-row">
+          <label for="aadhaar">Aadhaar Number *</label>
+          <input type="text" id="aadhaar" value="7734 2261 5590" required>
+          <div class="hint">12-digit unique identification number</div>
+        </div>
+        <div class="form-row">
+          <label for="phone">Mobile Number *</label>
+          <input type="tel" id="phone" value="98765 12340" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" value="rahul.deshmukh96@sevamail.in" required>
+        </div>
+        <div class="form-row">
+          <label for="pan">PAN Number (optional)</label>
+          <input type="text" id="pan" value="BQPRD5567L">
+        </div>
+        <div class="form-row">
+          <label for="pincode">PIN Code *</label>
+          <input type="text" id="pincode" value="411014" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="address">Full Residential Address *</label>
+        <textarea id="address" rows="2" required>Flat 302, Om Sai Residency, Viman Nagar, Pune, Maharashtra - 411014</textarea>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="pwd">Create Password *</label>
+          <input type="password" id="pwd" value="Rahul@2026!" required>
+        </div>
+        <div class="form-row">
+          <label for="pwd2">Confirm Password *</label>
+          <input type="password" id="pwd2" value="Rahul@2026!" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label><input type="checkbox" checked style="width:auto;display:inline-block"> I confirm the above details are correct and consent to identity verification.</label>
+      </div>
+
+      <button type="submit" class="btn">Register & Continue to Document Upload</button>
+    </form>
+  </div>
+</main>
+
+<div id="site-footer-mount"></div>
+<script src="js/main.js"></script>
+</body>
+</html>

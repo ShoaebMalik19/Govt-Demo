@@ -1,3 +1,5 @@
 node_modules/
 *.log
 .env
+data/db.json.bak
+data/db.json.tmp

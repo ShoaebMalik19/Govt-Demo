@@ -30,7 +30,7 @@
           <textarea rows="5" id="g-details" required>I applied for the Rural Housing Assistance Scheme (Application SCH-88213) on 28 Aug 2026. It has been under review for over 2 weeks. Please expedite processing.</textarea>
         </div>
         <div class="upload-box" style="margin-bottom:16px">Attach supporting document (optional) — screenshot, receipt, or ID proof</div>
-        <button type="submit" class="btn">Submit Grievance</button>
+        <button type="submit" class="btn" id="g-submit-btn" disabled>Loading…</button>
       </form>
     </div>
 
@@ -48,12 +48,15 @@
 <div id="site-footer-mount"></div>
 <script src="js/main.js"></script>
 <script>
-  fetchMe().then(u => {
+  ensureUser().then(u => {
     if (u) {
       setVal("g-name", u.name); setVal("g-phone", formatPhone(u.phone));
       setVal("g-email", u.email); setVal("g-aadhaar", u.aadhaar);
       loadGrievances();
     }
+  }).finally(() => {
+    const btn = document.getElementById("g-submit-btn");
+    if (btn) { btn.disabled = false; btn.textContent = "Submit Grievance"; }
   });
 </script>
 </body>

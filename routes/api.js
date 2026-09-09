@@ -57,9 +57,13 @@ router.post("/auth/logout", (req, res) => {
   req.session.destroy(() => res.json({ ok: true }));
 });
 
-router.get("/me", requireAuth, (req, res) => {
+// Always 200: "am I logged in" is a routine check every page makes, not an error
+// condition, so it shouldn't surface as a failed-request in the browser console.
+// null means "not logged in" -- callers branch on that, not on HTTP status.
+router.get("/me", (req, res) => {
+  if (!req.session.citizenId) return res.json(null);
   const citizen = db.findOne("citizens", c => c.id === req.session.citizenId);
-  if (!citizen) return res.status(401).json({ error: "Session invalid" });
+  if (!citizen) return res.json(null);
   res.json(publicCitizen(citizen));
 });
 

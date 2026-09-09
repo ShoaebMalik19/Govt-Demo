@@ -1,6 +1,18 @@
 // e-Nagrik Seva Kendra -- frontend logic. Talks to the real Express API under /api/*.
 
 let CURRENT_USER = null;
+let meFetchPromise = null;
+
+// Every page ends up wanting "am I logged in / who is it" at load time -- the shared
+// header (loadPartials), requireLogin(), and several pages' own inline scripts all
+// asked independently before, firing 2-3 parallel /api/me calls per page load and
+// racing each other for who populates the DOM first. ensureUser() makes that a
+// single shared request everyone awaits, so there's exactly one source of truth and
+// no race between "did the form get pre-filled yet" and "did I already submit it".
+function ensureUser() {
+  if (!meFetchPromise) meFetchPromise = fetchMe();
+  return meFetchPromise;
+}
 
 async function api(path, opts) {
   const res = await fetch("/api" + path, {
@@ -17,16 +29,15 @@ async function api(path, opts) {
 
 async function fetchMe() {
   try {
-    CURRENT_USER = await api("/me");
-    return CURRENT_USER;
+    CURRENT_USER = await api("/me"); // always 200; resolves to the citizen or null
   } catch (e) {
-    CURRENT_USER = null;
-    return null;
+    CURRENT_USER = null; // only reachable if the server itself is unreachable
   }
+  return CURRENT_USER;
 }
 
 async function requireLogin() {
-  const user = await fetchMe();
+  const user = await ensureUser();
   if (!user) window.location.href = "login.html";
   return user;
 }
@@ -467,7 +478,7 @@ async function loadPartials() {
     if (a.getAttribute("data-page") === page) a.classList.add("active");
   });
 
-  await fetchMe();
+  await ensureUser();
   const loginBtn = document.getElementById("login-btn");
   if (loginBtn && CURRENT_USER) {
     loginBtn.textContent = `My Account (${CURRENT_USER.name})`;

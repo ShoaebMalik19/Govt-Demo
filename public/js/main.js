@@ -27,18 +27,31 @@ async function api(path, opts) {
   return data;
 }
 
+// Resolves to: the citizen object (logged in), null (server confirmed logged out),
+// or undefined (the request itself failed/was aborted -- most commonly because the
+// browser cancelled it when the user navigated to another page before it finished).
+// That is NOT the same thing as "logged out", so callers must not treat it as one --
+// see requireLogin() below for why that distinction matters.
 async function fetchMe() {
   try {
-    CURRENT_USER = await api("/me"); // always 200; resolves to the citizen or null
+    CURRENT_USER = await api("/me");
   } catch (e) {
-    CURRENT_USER = null; // only reachable if the server itself is unreachable
+    return undefined;
   }
   return CURRENT_USER;
 }
 
 async function requireLogin() {
   const user = await ensureUser();
-  if (!user) window.location.href = "login.html";
+  // Only redirect on a confirmed "you're not logged in" (null) from the server.
+  // `undefined` means the /me request itself failed or got cancelled -- most often
+  // because the browser was already navigating to this very page when the previous
+  // page's own check was in flight. Redirecting on that used to let an abandoned
+  // page's stale callback win the race and hijack whatever the user had just
+  // clicked, sending them to login instead -- which is what "keeps redirecting to
+  // login" turned out to be. Failing open here (proceed without user data) is far
+  // less disruptive than that.
+  if (user === null) window.location.href = "login.html";
   return user;
 }
 

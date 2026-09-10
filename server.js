@@ -11,7 +11,10 @@ app.use(session({
   secret: "ensk-portal-session-secret-2026",
   resave: false,
   saveUninitialized: false,
-  cookie: { httpOnly: true, sameSite: "lax", maxAge: 1000 * 60 * 60 * 8 }
+  rolling: true, // refresh the expiry on every request, so an active session (e.g. a
+                  // long extension test run) never times out mid-use -- it only expires
+                  // after a full 30 days of genuine inactivity.
+  cookie: { httpOnly: true, sameSite: "lax", maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
 app.use("/api", apiRouter);

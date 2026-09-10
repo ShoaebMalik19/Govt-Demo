@@ -157,6 +157,8 @@ footer.site-footer{background:var(--navy-dark);color:#c9d5e5;margin-top:30px;pad
 .toast{background:#1c2530;color:#fff;padding:10px 16px;border-radius:6px;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.25);opacity:0;transform:translateY(8px);transition:opacity .25s,transform .25s;max-width:320px}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.ok{background:var(--ok)}
+.toast.warn{background:#8a5a00}
+.toast.err{background:var(--danger)}
 
 /* Reveal-on-click masked field */
 .reveal-field{display:inline-flex;align-items:center;gap:8px}

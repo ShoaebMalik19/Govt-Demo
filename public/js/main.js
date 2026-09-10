@@ -41,17 +41,18 @@ async function fetchMe() {
   return CURRENT_USER;
 }
 
+// Deliberately does NOT navigate anywhere. The only places that should ever send
+// someone to login.html are an explicit click on a login link, or code the user
+// directly asked for -- not an automatic redirect triggered by a background check.
+// That auto-redirect was the whole complaint: any hiccup in the /me check (a slow
+// network, the extension hammering the API, a race with in-flight navigation) could
+// silently bounce the page away from whatever the user or the extension was doing.
+// Callers get the user (or null/undefined) back and decide for themselves how to
+// degrade -- e.g. skip loading personal data and leave the page's static content
+// visible, rather than yanking the whole page out from under whoever's using it.
 async function requireLogin() {
   const user = await ensureUser();
-  // Only redirect on a confirmed "you're not logged in" (null) from the server.
-  // `undefined` means the /me request itself failed or got cancelled -- most often
-  // because the browser was already navigating to this very page when the previous
-  // page's own check was in flight. Redirecting on that used to let an abandoned
-  // page's stale callback win the race and hijack whatever the user had just
-  // clicked, sending them to login instead -- which is what "keeps redirecting to
-  // login" turned out to be. Failing open here (proceed without user data) is far
-  // less disruptive than that.
-  if (user === null) window.location.href = "login.html";
+  if (!user) showToast("You're not logged in on this device/session -- some data on this page won't load.", "warn");
   return user;
 }
 
